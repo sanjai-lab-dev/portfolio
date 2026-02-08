@@ -6,7 +6,7 @@ function Project() {
       img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
       title: "Portfolio Website",
       info: "Personal portfolio built with React and Tailwind CSS showcasing my projects and skills.",
-      git_link: "https://github.com/yourusername/portfolio"
+      git_link: "http://sanjai-lab-dev.github.io/portfolio"
     },
     {
       img: "https://images.unsplash.com/photo-1556155092-8707de31f9c4",
