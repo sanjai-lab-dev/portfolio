@@ -1,69 +1,76 @@
 import React, { useState } from 'react';
-// Assuming the path to your photo is correct
 import photo from './assets/Gemini_Generated_Image_h4q8rgh4q8rgh4q8.png';
 
 function Home() {
   const [isStarted, setIsStarted] = useState(false);
 
   return (
-    <div className='relative flex h-screen w-full flex-col overflow-hidden bg-linear-to-br from-gray-950 via-neutral-900 to-gray-950 text-white md:flex-row'>
+    <div className='relative h-screen w-full overflow-hidden bg-[#0a0a0a] text-white'>
       
-      {/* Left Section: Introduction */}
-      <div className='flex h-full w-full flex-col justify-center px-8 md:w-1/2 md:px-16 xl:px-24'>
-        <div className='max-w-2xl'>
-          <h1 className='mb-6 text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-stone-200 to-stone-500 md:text-6xl lg:text-7xl xl:text-8xl'>
-            Welcome.
-          </h1>
-          <p className='text-lg leading-relaxed text-stone-400 md:text-xl'>
-            <span className='font-bold text-stone-200'>I'm Sanjai,</span> a dedicated 
-            <span className='text-stone-200'> Junior Software Engineer</span> specializing in the 
-            MERN Stack. I transform complex problems into elegant, scalable digital solutions.
-          </p>
-          <div className='mt-8 flex gap-4'>
-            <button className='rounded-full border border-stone-600 px-6 py-2 transition-all hover:bg-stone-200 hover:text-black'>
-              View Projects
-            </button>
+      {/* 1. INITIAL OVERLAY (The "Click to Enter" Screen) */}
+      <div className={`absolute inset-0 z-50 flex items-center justify-center transition-opacity duration-1000 ${isStarted ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className="absolute inset-0 bg-stone-950" />
+        <button 
+          onClick={() => setIsStarted(true)}
+          className="group relative z-10 flex h-40 w-40 flex-col items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:scale-110 hover:border-stone-500"
+        >
+          <div className="absolute inset-0 animate-ping rounded-full bg-stone-500/20" />
+          <span className="text-xs font-black tracking-[0.3em] text-stone-500 group-hover:text-stone-200">ENTER</span>
+          <svg className="mt-2 h-6 w-6 text-stone-500 group-hover:text-stone-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </div>
+
+      {/* 2. MAIN CONTENT LAYER */}
+      <div className={`clip-circle flex h-full w-full flex-col md:flex-row ${isStarted ? 'clip-circle-open' : ''}`}>
+        
+        {/* Left Section: Introduction */}
+        <div className='flex h-full w-full flex-col justify-center bg-linear-to-br from-gray-950 via-neutral-900 to-gray-950 px-8 md:w-1/2 md:px-16 xl:px-24'>
+          <div className={isStarted ? 'animate-reveal [animation-delay:0.5s] opacity-0' : 'opacity-0'}>
+            <h1 className='mb-6 text-5xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-linear-to-r from-stone-100 to-stone-500 md:text-7xl lg:text-8xl'>
+              Welcome.
+            </h1>
+            <p className='max-w-md text-lg leading-relaxed text-stone-400 md:text-xl'>
+              <span className='font-bold text-stone-200 uppercase tracking-widest text-sm block mb-2'>I'm Sanjai,</span>
+              A <span className='text-stone-100 font-medium'>Junior Software Engineer</span> specializing in the 
+              MERN Stack. I transform complex problems into elegant, scalable digital solutions.
+            </p>
+            <div className='mt-10 flex gap-6'>
+              <button className='group relative overflow-hidden rounded-full border border-stone-700 px-8 py-3 transition-all hover:border-stone-200'>
+                <a className='relative z-10 font-bold group-hover:text-black ' href="#project">View Projects</a>
+                <div className='absolute inset-0 -translate-x-full bg-stone-200 transition-transform duration-300 group-hover:translate-x-0' />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Right Section: Profile Card */}
-      <div className={`${isStarted ? "animate-[three_1s_linear_forwards]" : ""} relative z-0 flex h-full w-full flex-col items-center justify-center bg-stone-500 text-black md:w-1/2 md:rounded-l-[10%]`}>
-        
-        {/* Profile Image Container */}
-        <div 
-          className="group relative m-5 h-56 w-56 overflow-hidden rounded-3xl border-4 border-white/50 bg-cover bg-center shadow-2xl  duration-400 hover:scale-105 xl:h-80 xl:w-80" 
-          style={{ backgroundImage: `url(${photo})` }}
-        >
-          <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+        {/* Right Section: Profile Card */}
+        <div className='relative flex h-full w-full flex-col items-center justify-center bg-stone-900 md:w-1/2'>
+          {/* Subtle Background Glow */}
+          <div className="absolute h-96 w-96 rounded-full bg-stone-500/10 blur-[120px]" />
+
+          <div className={`flex flex-col items-center transition-all duration-1000 delay-700 ${isStarted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {/* Profile Image Container */}
+            <div 
+              className="group relative mb-8 h-64 w-64 overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:scale-[1.02] hover:border-stone-500 xl:h-96 xl:w-80" 
+              style={{ 
+                backgroundImage: `url(${photo})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors" />
+            </div>
+
+            <div className='text-center'>
+              <span className='text-[10px] font-black tracking-[0.6em] text-stone-500 uppercase'>Software Engineer</span>
+              <h2 className='text-5xl font-black tracking-tighter text-white md:text-7xl'>SANJAI.D</h2>
+              <div className="mx-auto my-4 h-px w-12 bg-stone-700" />
+              <h3 className='text-sm font-medium tracking-[0.2em] text-stone-400'>MERN STACK DEVELOPER</h3>
+            </div>
+          </div>
         </div>
-
-        <div className='flex flex-col items-center gap-1'>
-          <span className='text-sm font-bold tracking-[0.3em] text-stone-300 uppercase'>Software Engineer</span>
-          <h2 className='text-4xl font-black md:text-6xl'>SANJAI.D</h2>
-          <h3 className='text-xl font-medium text-stone-700'>MERN STACK DEVELOPER</h3>
-        </div>
-      </div>
-
-      {/* Interaction Layer / Intro Overlay */}
-      <div className={`absolute inset-0 z-10 pointer-events-none ${isStarted ? 'hidden' : 'block'}`}>
-        <div className={`absolute left-0 top-0 h-screen w-1/2 bg-stone-800 transition-transform duration-1000 ${isStarted ? "-translate-x-full" : ""}`} />
-        <div className={`absolute right-0 top-0 h-screen w-1/2 bg-stone-700 transition-transform duration-1000 ${isStarted ? "translate-x-full" : ""}`} />
-      </div>
-
-      {/* Floating Action Button (SVG) */}
-      <div className='absolute inset-0 z-40 flex items-center justify-center pointer-events-none'>
-        <svg 
-           className={`h-40 w-40 cursor-pointer pointer-events-auto ${isStarted ? 'animate-[cir_1s_forwards]' : ' animate-[move_5s_forwards]'}`}
-           viewBox="0 0 100 100" 
-           onClick={() => setIsStarted(!isStarted)}
-        >
-          <circle 
-            
-            cx="50" cy="50" r="30" fill="#00433e" 
-          />
-          <text x="50" y="55" fontSize="10" textAnchor="middle" fill="white" className="pointer-events-none">CLICK</text>
-        </svg>
       </div>
     </div>
   );
