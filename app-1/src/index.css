@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@keyframes spini {
+    from {
+        translate: 0;
+    }
+
+    to {
+        translate: -100%;
+    }
+
+}
+
+div::-webkit-scrollbar {
+    display: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+@keyframes start {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+  50% {
+    transform: translate3d(10px, 10px, 0px);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+}
+@keyframes open{
+    0% {
+    transform: translate3d(0px, 50px, 0px);
+  }
+  50% {
+    transform: translate3d(0px, 10px, 0px);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+
+}
+@keyframes three{
+  0%{
+    transform:translateX(500px);
+  }
+   20%{
+    transform: translateX(400px);
+  }
+   40%{
+    transform: translateX(300px);
+  }
+   60%{
+    transform: translateX(200px);
+  }
+  80%{
+    transform: translateX(100px);
+  }
+  100%{ transform:translateX(0px);
+  }
+}
+
+@keyframes cir{
+  0%{
+    opacity: 10;
+  }
+   20%{
+    opacity:5;
+    scale: 5;
+   }
+  40%{
+    opacity:2;
+     scale: 10;
+  
+  }
+
+  
+   80%{
+    opacity:0;
+     scale: 20;
+  }
+  100%{
+    opacity:0;
+    
+    display: none;
+
+  }
+
+}
+
+@keyframes move {
+  0%   { transform: translateY(-1000px) scale(1); animation-timing-function: ease-in; }
+
+  /* First Impact */
+  15%  { transform: translateY(0) scale(1.2, 0.8); animation-timing-function: ease-out; }
+
+  /* First Bounce */
+  30%  { transform: translateY(-300px) scale(0.9, 1.1); animation-timing-function: ease-in; }
+
+  /* Second Impact */
+  45%  { transform: translateY(0) scale(1.1, 0.9); animation-timing-function: ease-out; }
+
+  /* Second Bounce */
+  58%  { transform: translateY(-120px) scale(0.95, 1.05); animation-timing-function: ease-in; }
+
+  /* Third Impact */
+  70%  { transform: translateY(0) scale(1.05, 0.95); animation-timing-function: ease-out; }
+
+  /* Third Bounce */
+  80%  { transform: translateY(-50px) scale(0.98, 1.02); animation-timing-function: ease-in; }
+
+  /* Final Settling */
+  90%  { transform: translateY(0) scale(1.02, 0.98); animation-timing-function: ease-out; }
+  100% { transform: translateY(100) scale(1);
+    fill: rgb(255, 1, 1);
+
+  
+  
+  }
+}
+
+
+.mm {
+  /* 'linear' ensures the speed never changes */
+  animation: move 1s linear infinite;
+}
