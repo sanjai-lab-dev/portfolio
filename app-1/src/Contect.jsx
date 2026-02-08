@@ -3,12 +3,34 @@ import React, { useState } from 'react';
 function Contact() {
     const [isSending, setIsSending] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsSending(true);
-        // Simulate a delay
-        setTimeout(() => setIsSending(false), 2000);
-    };
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    const formData = new FormData(e.target);
+
+    try {
+        const response = await fetch("https://formspree.io/f/mgolejwd", {
+            method: "POST",
+            body: formData,
+            headers: {
+                Accept: "application/json",
+            },
+        });
+
+        if (response.ok) {
+            alert("Message sent successfully!");
+            e.target.reset();
+        } else {
+            alert("Something went wrong. Try again.");
+        }
+    } catch (error) {
+        alert("Network error.");
+    }
+
+    setIsSending(false);
+};
+
 
     return (
         <div className='w-full min-h-screen py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-zinc-950 flex justify-center items-center text-zinc-100 relative overflow-hidden'>
@@ -33,8 +55,8 @@ function Contact() {
 
                     <div className='grid grid-cols-1 gap-6 mt-8'>
                         {[
-                            { label: 'Email', value: 'sanjaidhesigan@gmail.com', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
-                            { label: 'Location', value: 'Krishnagiri, Tamil Nadu', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' }
+                            { label: 'Email', value: 'sanjaydhesigan@gmail.com', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+                            { label: 'Location', value:'Krishnagiri, Tamil Nadu', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' }
                         ].map((item, idx) => (
                             <div key={idx} className='flex items-center gap-5 p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-cyan-500/50 transition-all group'>
                                 <div className='p-3 bg-zinc-800 rounded-lg group-hover:text-stone-400 transition-colors'>
@@ -66,6 +88,7 @@ function Contact() {
                                 <div className='space-y-2'>
                                     <label className='text-xs font-mono uppercase text-zinc-500 ml-1'>Full Name</label>
                                     <input 
+                                        name='name'
                                         type="text" 
                                         className='w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-4 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-zinc-700'
                                         placeholder="sanjai D"
@@ -75,6 +98,7 @@ function Contact() {
                                 <div className='space-y-2'>
                                     <label className='text-xs font-mono uppercase text-zinc-500 ml-1'>Email Address</label>
                                     <input 
+                                        name='mail'
                                         type="email" 
                                         className='w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-4 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-zinc-700'
                                         placeholder="sanjai@example.com"
@@ -85,7 +109,8 @@ function Contact() {
 
                             <div className='space-y-2'>
                                 <label className='text-xs font-mono uppercase text-zinc-500 ml-1'>Message</label>
-                                <textarea 
+                                <textarea
+                                    name='message' 
                                     rows="5"
                                     className='w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-4 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all resize-none placeholder:text-zinc-700'
                                     placeholder="Tell me about your project..."

@@ -111,7 +111,7 @@ body::-webkit-scrollbar {
 
   /* Final Settling */
   90%  { transform: translateY(0) scale(1.02, 0.98); animation-timing-function: ease-out; }
-  100% { transform: translateY(100) scale(1);
+  100% { transform: translateY(0) scale(1);
     fill: rgb(255, 1, 1);
 
   
