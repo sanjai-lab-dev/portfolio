@@ -32,8 +32,8 @@ function Contact() {
         <div className='relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#050505] px-4 py-16 text-zinc-100 sm:px-6 lg:px-8'>
             
             {/* 1. Cinematic Background */}
-            <div className="absolute top-[-10%] right-[-5%] h-[500px] w-[500px] rounded-full bg-cyan-600/10 blur-[120px]" />
-            <div className="absolute bottom-[-10%] left-[-5%] h-[500px] w-[500px] rounded-full bg-zinc-800/20 blur-[120px]" />
+            <div className="absolute top-[-10%] right-[-5%] h-125 w-125 rounded-full bg-cyan-600/10 blur-[120px]" />
+            <div className="absolute bottom-[-10%] left-[-5%] h-125 w-125 rounded-full bg-zinc-800/20 blur-[120px]" />
 
             <div className='relative z-10 flex w-full max-w-6xl flex-col gap-12 lg:flex-row lg:items-center'>
 
@@ -41,7 +41,7 @@ function Contact() {
                 <div className='flex w-full flex-col space-y-10 lg:w-2/5'>
                     <div className='space-y-4'>
                         <div className="flex items-center gap-2">
-                            <span className="h-[1px] w-8 bg-cyan-500"></span>
+                            <span className="h-px w-8 bg-cyan-500"></span>
                             <h2 className='font-mono text-xs tracking-[0.3em] uppercase text-cyan-500'>Available for Projects</h2>
                         </div>
                         <h1 className='text-5xl font-black tracking-tighter md:text-7xl'>
