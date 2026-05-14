@@ -117,9 +117,9 @@ const Project = () => {
             {/* Image Section */}
             <div className='group relative w-full lg:w-1/2'>
               <div className="absolute -inset-4 rounded-[2rem] bg-blue-600/20 blur-2xl" />
-              <div className='relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-stone-900 shadow-2xl'>
+              <div className='relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-stone-900 shadow-2xl transition-transform delay-100 ease-in-out hover:scale-110'>
                 <img
-                  className='h-full w-full object-cover'
+                  className='h-full w-full object-cover '
                   src={currentProject.img}
                   alt={currentProject.title}
                 />
@@ -159,7 +159,7 @@ const Project = () => {
       </div>
 
       {/* 4. Controls */}
-      <div className="absolute bottom-10 left-10 flex gap-4 z-50">
+      <div className="absolute bottom-10 left-[50%] flex gap-4 z-50 scale-150">
         <button 
           onClick={() => paginate(-1)}
           className="group flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white hover:text-black"
@@ -174,7 +174,7 @@ const Project = () => {
         </button>
       </div>
 
-      <div className="absolute bottom-10 right-10 hidden md:block">
+      <div className="absolute top-10 left-70 hidden md:block scale-150">
           <p className="text-[10px] font-black tracking-[0.5em] text-stone-500 uppercase">
             Project {page + 1} / {projects.length}
           </p>
