@@ -148,7 +148,7 @@ const Project = () => {
                 <a
                   href={currentProject.git_link}
                   target="_blank"
-                  className='rounded-full bg-white px-10 py-4 font-bold text-black transition-transform hover:scale-105 active:scale-95'
+                  className='rounded-full bg-white px-10 py-4 font-bold text-black transition-transform hover:scale-105 active:scale-95 '
                 >
                   View Case Study
                 </a>
@@ -159,7 +159,7 @@ const Project = () => {
       </div>
 
       {/* 4. Controls */}
-      <div className="absolute bottom-10 left-[50%] flex gap-4 z-50 scale-150">
+      <div className="absolute bottom-10 left-[20%] flex gap-4 z-50 scale-150">
         <button 
           onClick={() => paginate(-1)}
           className="group flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white hover:text-black"
